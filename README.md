@@ -61,29 +61,75 @@ Once you've configured all the settings, click "Create VPC."
    ![Screenshot 2025-03-27 145720](https://github.com/user-attachments/assets/1f366ca3-5e28-461a-b30a-f8ca1d676ade)
    ![Screenshot 2025-03-27 150202](https://github.com/user-attachments/assets/1bf60da6-60fc-4c74-9b76-4b4406b7e1cf)
 On **Launch Template** we need to select Ubuntu **AMI**
-3. Set up **Auto Scaling Policies**  
+2. Set up **Auto Scaling Policies**  
 ![Screenshot 2025-03-27 150356](https://github.com/user-attachments/assets/5eceb676-bf2b-42fe-af9b-6f071ea62064)
 ![Screenshot 2025-03-27 150527](https://github.com/user-attachments/assets/a64653f3-0d7f-464e-865e-1d374030adf4)
 ![Screenshot 2025-03-27 150725](https://github.com/user-attachments/assets/adb1a730-9b7a-4fbf-b233-1202ecc9ccb0)
 ![Screenshot 2025-03-27 150812](https://github.com/user-attachments/assets/a3310ece-99a2-4993-bcf8-cd2353a27ab9)
 ![Screenshot 2025-03-27 151206](https://github.com/user-attachments/assets/73c79b9d-5612-4015-8e6a-0ff23999c284)
 
+3. Now your are Successfully Created Auto Scaling Group.
+4. Open the AWS Management Console.
+5. Navigate to the EC2 console by clicking on "Services" in the top-left corner, then selecting "EC2" under the "Compute" section.
+6. In the EC2 dashboard, you'll find the "Instances" link on the left-hand navigation pane. Click on "Instances."
+7. Here, you should see the list of EC2 instances associated with your account. Look for the instances created by your Auto Scaling Group.
+Since you mentioned that the Auto Scaling Group launched instances in different AZs, you can check the "Availability Zone" column to verify that these instances are indeed distributed across multiple AZs.
+
 ### **Step 3: Deploy a Bastion Host**
-1. Create an EC2 instance in the **public subnet**  
-2. Enable SSH access from your IP  
-3. Use it to connect to **private instances**  
-
-### **Step 4: Configure Load Balancer**
-1. Create an **Application Load Balancer**  
-2. Attach it to the **Auto Scaling Group**  
-3. Add **HTTPS (SSL) support**  
-
----
+1. Create an EC2 instance in the **public subnet**
+2. Creating the **Bastion Host** :
+   ![Screenshot 2025-03-27 151400](https://github.com/user-attachments/assets/af145e46-65c1-496b-a88c-109a3b4eff1e)
+   ![Screenshot 2025-03-27 151457](https://github.com/user-attachments/assets/7f9da77d-8bb1-451b-a91c-ff0c8d3b9a0c)
+   ![Screenshot 2025-03-27 151644](https://github.com/user-attachments/assets/bee054a2-89a7-4108-bf21-0edf52dfd170)
 
 ## **🔧 How to SSH into Private Instances**
-```sh
+SSH into the Bastion Host Instance: To SSH into the private instances, we first need to connect to our Bastion host instance. From there, we'll be able to SSH into the private instance.
+
+Ensure the PEM File is Present on the Bastion Host: Additionally, make sure that the PEM file is present on the Bastion host. Without it, you won't be able to SSH into the private instance from the Bastion host.
+
+Open a Terminal: Open a terminal window on your local machine.
+
+# Execute the Following Commands:
+
+a. If your PEM file is named something like <prod.pem>, you must remove spaces in the filename.
+
+b. Copy the PEM file to the Bastion host using the scp command. Replace <pem file location> with the local and remote file paths, and <bastion host public IP> with the Bastion host's public IP address. Example:
+
+scp -i C:\Users\capta\Downloads\prod.pem C:\Users\capta\Downloads\prod.pemubuntu@34.229.240.123:/home/ubuntu
+
 # Connect to Bastion Host
-ssh -i my-key.pem ubuntu@<Bastion_Public_IP>
+ssh -i prod.pem ubuntu@<Bastion_Public_IP>
+chmod 400 prod.pem
 
 # Connect to Private Instance from Bastion
-ssh -i my-key.pem ubuntu@<Private_Instance_IP>
+ssh -i prod.pem ubuntu@<Private_Instance_IP>
+
+# We will deploy our application on one of the private instances to test the load balancer.
+curl -L -o wedding-lite.zip " https://www.tooplate.com/view/2131-wedding-lite"
+
+# Finally, start a Python HTTP server on port 8000 to deploy your application on the private instance:
+python3 -m http.server 8000
+
+# Note :
+We intentionally deployed the application on only one instance to check if the Load Balancer will distribute 50% of the traffic to one instance (which will receive a response) and 50% to another instance (which will not receive a response).
+
+### **Step 4: Creating the Load Balancer**
+
+ # create a target group.
+ ![Screenshot 2025-03-27 160358](https://github.com/user-attachments/assets/1b448ed0-92bb-4bf2-b6b5-ec26a6eac541)
+ ![Screenshot 2025-03-27 160426](https://github.com/user-attachments/assets/aa8c9b49-b0a2-418a-9221-4d2e487bbcbe)
+ ![Screenshot 2025-03-27 160450](https://github.com/user-attachments/assets/237af22f-ca10-444e-be1c-d2378fd48efe)
+
+ # create a Application Load Balancer.
+![Screenshot 2025-03-27 160559](https://github.com/user-attachments/assets/80111860-618d-40ee-b1d3-4a7e8aefce38)
+![Screenshot 2025-03-27 160613](https://github.com/user-attachments/assets/6a4def28-97fc-4cc2-a19e-a08aadcf4d38)
+![Screenshot 2025-03-27 160628](https://github.com/user-attachments/assets/81a5fc48-5cd5-4acf-a5d2-a5b708737d9e)
+![Screenshot 2025-03-27 160836](https://github.com/user-attachments/assets/e8b974e3-feaf-4393-8b64-c8ec7ad61511)
+
+
+
+
+
+
+
+
