@@ -63,6 +63,10 @@ Once you've configured all the settings, click "Create VPC."
 On **Launch Template** we need to select Ubuntu **AMI**
 3. Set up **Auto Scaling Policies**  
 ![Screenshot 2025-03-27 150356](https://github.com/user-attachments/assets/5eceb676-bf2b-42fe-af9b-6f071ea62064)
+![Screenshot 2025-03-27 150527](https://github.com/user-attachments/assets/a64653f3-0d7f-464e-865e-1d374030adf4)
+![Screenshot 2025-03-27 150725](https://github.com/user-attachments/assets/adb1a730-9b7a-4fbf-b233-1202ecc9ccb0)
+![Screenshot 2025-03-27 150812](https://github.com/user-attachments/assets/a3310ece-99a2-4993-bcf8-cd2353a27ab9)
+![Screenshot 2025-03-27 151206](https://github.com/user-attachments/assets/73c79b9d-5612-4015-8e6a-0ff23999c284)
 
 ### **Step 3: Deploy a Bastion Host**
 1. Create an EC2 instance in the **public subnet**  
