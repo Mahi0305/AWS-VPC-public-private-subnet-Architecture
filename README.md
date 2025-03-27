@@ -14,7 +14,8 @@ This project sets up a **secure VPC architecture** with **public and private sub
 ---
 
 ## **📌 Architecture Diagram**  
-_(Add an architecture diagram if available)_
+![Screenshot 2025-03-27 113522](https://github.com/user-attachments/assets/3727bc29-1bc5-4817-a703-ca97ae9557ba)
+
 
 ---
 
@@ -29,10 +30,20 @@ _(Add an architecture diagram if available)_
 
 ## **🚀 Setup Instructions**  
 ### **Step 1: Create a VPC**
-1. Go to the AWS VPC console → Create VPC  
-2. Choose **2 Public Subnets & 2 Private Subnets**  
-3. Set up **NAT Gateways & Route Tables**  
-
+1. Open the Amazon VPC console by visiting https://console.aws.amazon.com/vpc/.
+2. On the dashboard, click on "Create VPC."
+3. Under "Resources to create," select "VPC and more."
+4. Configure the VPC:
+   a. Provide a name for the VPC in the "Name tag auto-generation" field.
+   b. For the IPv4 CIDR block, leave it as default suggestion.
+5. Configure the subnets:
+   a. Set the "Number of Availability Zones" to 2 for increased resiliency across multiple Availability Zones.
+   b. Specify the "Number of public subnets" as 2.
+   c. Specify the "Number of private subnets" as 2.
+   d. For NAT gateways, choose "1 per AZ" to enhance resiliency.
+   g. For VPC endpoints, you can choose "None" .
+   h. Regarding DNS options, clear the checkbox for "Enable DNS hostnames."
+Once you've configured all the settings, click "Create VPC."
 ### **Step 2: Configure Auto Scaling Group**
 1. Create a **Launch Template** for EC2 instances  
 2. Set up **Auto Scaling Policies**  
