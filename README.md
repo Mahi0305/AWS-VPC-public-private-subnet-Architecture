@@ -1,7 +1,6 @@
 
 # **AWS Secure VPC Architecture with Public & Private Subnets**  
 
-![AWS VPC Architecture](image-link-here)
 
 ## **📖 Overview**  
 This project sets up a **secure VPC architecture** with **public and private subnets** across multiple **Availability Zones** in AWS. The infrastructure includes:  
@@ -35,14 +34,21 @@ This project sets up a **secure VPC architecture** with **public and private sub
 3. Under "Resources to create," select "VPC and more."
 4. Configure the VPC:
    a. Provide a name for the VPC in the "Name tag auto-generation" field.
+   
    b. For the IPv4 CIDR block, leave it as default suggestion.
 5. Configure the subnets:
    a. Set the "Number of Availability Zones" to 2 for increased resiliency across multiple Availability Zones.
+   
    b. Specify the "Number of public subnets" as 2.
+   
    c. Specify the "Number of private subnets" as 2.
+   
    d. For NAT gateways, choose "1 per AZ" to enhance resiliency.
+   
    g. For VPC endpoints, you can choose "None" .
+   
    h. Regarding DNS options, clear the checkbox for "Enable DNS hostnames."
+   
 Once you've configured all the settings, click "Create VPC."
 ### **Step 2: Configure Auto Scaling Group**
 1. Create a **Launch Template** for EC2 instances  
