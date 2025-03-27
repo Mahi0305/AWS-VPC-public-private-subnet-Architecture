@@ -57,10 +57,12 @@ Once you've configured all the settings, click "Create VPC."
 ### **Step 2: Configure Auto Scaling Group**
 1. Create a **Launch Template** for EC2 instances
    ![Screenshot 2025-03-27 145527](https://github.com/user-attachments/assets/e7259b46-ce61-4024-8d7c-79a0930edcaa)
+   ![Screenshot 2025-03-27 165040](https://github.com/user-attachments/assets/30bf6a98-1795-4194-9044-c6d69768e808)
    ![Screenshot 2025-03-27 145720](https://github.com/user-attachments/assets/1f366ca3-5e28-461a-b30a-f8ca1d676ade)
    ![Screenshot 2025-03-27 150202](https://github.com/user-attachments/assets/1bf60da6-60fc-4c74-9b76-4b4406b7e1cf)
-
-2. Set up **Auto Scaling Policies**  
+On **Launch Template** we need to select Ubuntu **AMI**
+3. Set up **Auto Scaling Policies**  
+![Screenshot 2025-03-27 150356](https://github.com/user-attachments/assets/5eceb676-bf2b-42fe-af9b-6f071ea62064)
 
 ### **Step 3: Deploy a Bastion Host**
 1. Create an EC2 instance in the **public subnet**  
