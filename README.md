@@ -61,7 +61,7 @@ Once you've configured all the settings, click "Create VPC."
    ![Screenshot 2025-03-27 145720](https://github.com/user-attachments/assets/1f366ca3-5e28-461a-b30a-f8ca1d676ade)
    ![Screenshot 2025-03-27 150202](https://github.com/user-attachments/assets/1bf60da6-60fc-4c74-9b76-4b4406b7e1cf)
 On **Launch Template** we need to select Ubuntu **AMI**
-2. Set up **Auto Scaling Policies**  
+2. Set up **Auto Scaling Group**  
 ![Screenshot 2025-03-27 150356](https://github.com/user-attachments/assets/5eceb676-bf2b-42fe-af9b-6f071ea62064)
 ![Screenshot 2025-03-27 150527](https://github.com/user-attachments/assets/a64653f3-0d7f-464e-865e-1d374030adf4)
 ![Screenshot 2025-03-27 150725](https://github.com/user-attachments/assets/adb1a730-9b7a-4fbf-b233-1202ecc9ccb0)
@@ -115,16 +115,38 @@ We intentionally deployed the application on only one instance to check if the L
 
 ### **Step 4: Creating the Load Balancer**
 
- # create a target group.
+ # Create a target group.
  ![Screenshot 2025-03-27 160358](https://github.com/user-attachments/assets/1b448ed0-92bb-4bf2-b6b5-ec26a6eac541)
  ![Screenshot 2025-03-27 160426](https://github.com/user-attachments/assets/aa8c9b49-b0a2-418a-9221-4d2e487bbcbe)
  ![Screenshot 2025-03-27 160450](https://github.com/user-attachments/assets/237af22f-ca10-444e-be1c-d2378fd48efe)
 
- # create a Application Load Balancer.
+ # Create a Application Load Balancer.
+![Screenshot 2025-03-27 171455](https://github.com/user-attachments/assets/ddf764ab-98d6-4db9-82a6-70fc6d3e0fd1)
+![Screenshot 2025-03-27 171554](https://github.com/user-attachments/assets/138d7036-6565-42dc-8482-6884baa4dba8)
 ![Screenshot 2025-03-27 160559](https://github.com/user-attachments/assets/80111860-618d-40ee-b1d3-4a7e8aefce38)
 ![Screenshot 2025-03-27 160613](https://github.com/user-attachments/assets/6a4def28-97fc-4cc2-a19e-a08aadcf4d38)
 ![Screenshot 2025-03-27 160628](https://github.com/user-attachments/assets/81a5fc48-5cd5-4acf-a5d2-a5b708737d9e)
 ![Screenshot 2025-03-27 160836](https://github.com/user-attachments/assets/e8b974e3-feaf-4393-8b64-c8ec7ad61511)
+![Screenshot 2025-03-27 161145](https://github.com/user-attachments/assets/91c9a637-2ba5-4875-961a-045ceb903547)
+
+**Here we need to edit inbound rules in Security group to allow HTTP traffic**
+![Screenshot 2025-03-27 161215](https://github.com/user-attachments/assets/e010ec7a-1525-4ec9-b001-b3140086c693)
+![Screenshot 2025-03-27 161242](https://github.com/user-attachments/assets/dc8587b0-b309-4b3e-8e6d-df2e67bc652e)
+![Screenshot 2025-03-27 161305](https://github.com/user-attachments/assets/589c4a53-3318-4be9-8cf0-fd50c599b277)
+
+**Copy the Load Balancer DNS Name**
+![Screenshot 2025-03-27 162410](https://github.com/user-attachments/assets/95d2a643-474c-4f03-815a-557d4eddecf7)
+
+**Paste the DNS name in Browser** 
+![Screenshot 2025-03-27 162356](https://github.com/user-attachments/assets/93ef111f-ce4f-4763-ab31-460d356bd713)
+Now We Successfully deployed Application securely in Private instance , We can access it through Internet using Load Balancer Securely .
+
+
+
+
+
+
+
 
 
 
