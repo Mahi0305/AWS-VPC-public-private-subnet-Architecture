@@ -33,10 +33,12 @@ This project sets up a **secure VPC architecture** with **public and private sub
 2. On the dashboard, click on "Create VPC."
 3. Under "Resources to create," select "VPC and more."
 4. Configure the VPC:
+
    a. Provide a name for the VPC in the "Name tag auto-generation" field.
    
    b. For the IPv4 CIDR block, leave it as default suggestion.
 5. Configure the subnets:
+
    a. Set the "Number of Availability Zones" to 2 for increased resiliency across multiple Availability Zones.
    
    b. Specify the "Number of public subnets" as 2.
